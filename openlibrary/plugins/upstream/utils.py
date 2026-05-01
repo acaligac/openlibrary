@@ -1328,10 +1328,7 @@ class UpstreamMemcacheClient:
         keys = [web.safestr(k) for k in keys]
 
         d = self._client.get_multi(keys)
-        return {
-            str(adapter.unconvert_key(k)): self.decompress(v)
-            for k, v in d.items()
-        }
+        return {str(adapter.unconvert_key(k)): self.decompress(v) for k, v in d.items()}
 
 
 if config.get('upstream_memcache_servers'):
