@@ -1270,7 +1270,7 @@ class HTML(str):
     __slots__ = ()
 
     def __init__(self, html):
-        str.__init__(self, web.safeunicode(html))
+        str.__init__(self, str(html))
 
     def __repr__(self):
         return "<html: %s>" % str.__repr__(self)
@@ -1329,7 +1329,7 @@ class UpstreamMemcacheClient:
 
         d = self._client.get_multi(keys)
         return {
-            web.safeunicode(adapter.unconvert_key(k)): self.decompress(v)
+            str(adapter.unconvert_key(k)): self.decompress(v)
             for k, v in d.items()
         }
 
